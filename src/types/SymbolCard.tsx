@@ -1,6 +1,8 @@
-export enum SymbolCard {
-  CLUB = "clubs",
-  HEARTS = "hearts",
-  SPADES = "spades",
-  DIAMONDS = "diamonds",
+import { SuitCard } from "./SuitCard";
+
+export const SymbolCard = {
+  [SuitCard.CLUB]: "♣",
+  [SuitCard.HEARTS]: "♥",
+  [SuitCard.SPADES]: "♠",
+  [SuitCard.DIAMONDS]: "♦",
 }

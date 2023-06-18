@@ -1,11 +1,13 @@
+import { SuitCard } from "./SuitCard";
+
 enum COLORS {
   RED = "red",
   BLACK = "black",
 }
 
-export enum ColorCard {
-  CLUB = COLORS.BLACK,
-  SPADES = COLORS.BLACK,
-  HEARTS = COLORS.RED,
-  DIAMONDS = COLORS.RED,
+export const ColorCard = {
+  [SuitCard.CLUB]: COLORS.BLACK,
+  [SuitCard.HEARTS]: COLORS.RED,
+  [SuitCard.SPADES]: COLORS.BLACK,
+  [SuitCard.DIAMONDS]: COLORS.RED,
 }
