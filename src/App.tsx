@@ -24,7 +24,7 @@ function App() {
     <CardBoard>
       <Card
         suit={SuitCard.DIAMONDS}
-        number={NumberCard.TEN}
+        number={NumberCard.NINE}
         isUp={isUp}
       ></Card>
       <ButtonFlip
