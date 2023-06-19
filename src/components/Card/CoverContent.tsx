@@ -1,6 +1,7 @@
 import { styled } from "styled-components";
 
 const BaseCoverContent = ({
+  // @ts-ignore
   single = false,
   children,
   className,
@@ -13,7 +14,6 @@ const BaseCoverContent = ({
 };
 
 export const CoverContent = styled(BaseCoverContent)`
-  height: 100%;
   display: flex;
   flex-direction: column;
   gap: 1rem;

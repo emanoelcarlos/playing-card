@@ -1,39 +1,52 @@
-import { useState } from "react";
+import { useEffect } from "react";
+
 import Card from "./components/Card";
-import { styled } from "styled-components";
-import { NumberCard } from "./types/NumberCard";
-import { SuitCard } from "./types/SuitCard";
+import { Back } from "./components/Card/Back";
+import { CardSlot } from "./components/Card/CardSlot";
+import { useSetPlayingCards } from "./hooks/useSetPlayingCards";
+import { CardBoard } from "./components/CardBoard/CardBoard";
 import "./App.css";
 
-const CardBoard = styled.div`
-  display: flex;
-`;
-
-const ButtonFlip = styled.button`
-  height: 4rem;
-  width: 12rem;
-  border-radius: 0.6rem;
-  background-color: #30623c;
-  color: white;
-`;
-
 function App() {
-  const [isUp, setIsUp] = useState(false);
+  const { actualCard, cardsOnDeck, cardsFliped, suffleSet, flipCard } =
+    useSetPlayingCards();
+
+  useEffect(() => {
+    suffleSet();
+  }, []);
+
+  console.log({ actualCard, cardsOnDeck, cardsFliped });
 
   return (
     <CardBoard>
-      <Card
-        suit={SuitCard.DIAMONDS}
-        number={NumberCard.NINE}
-        isUp={isUp}
-      ></Card>
-      <ButtonFlip
-        onClick={() => {
-          setIsUp((previous) => !previous);
-        }}
-      >
-        Flip Cards
-      </ButtonFlip>
+      {cardsOnDeck > 0 ? (
+        <Back
+          action={() => {
+            flipCard();
+          }}
+        />
+      ) : (
+        <CardSlot
+          text="All cards flipped. Click here to shuffle the deck"
+          action={suffleSet}
+        />
+      )}
+
+      {cardsFliped === 0 ? (
+        <CardSlot text="Click in the deck to flip a card" />
+      ) : (
+        actualCard && (
+          <Card suit={actualCard?.suit} number={actualCard?.number}></Card>
+        )
+      )}
+
+      <div>{`${cardsOnDeck} ${
+        cardsOnDeck === 1 ? "card" : "cards"
+      } on Deck`}</div>
+
+      <div>
+        {`${cardsFliped} ${cardsFliped === 1 ? "card" : "cards"} flipped`}
+      </div>
     </CardBoard>
   );
 }

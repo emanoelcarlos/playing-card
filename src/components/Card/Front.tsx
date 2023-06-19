@@ -1,21 +1,32 @@
 import { styled } from "styled-components";
 import { ColorCard } from "../../types/ColorCard";
-import { CardProps } from ".";
 import { SymbolCard } from "../../types/SymbolCard";
+import { SuitCard } from "../../types/SuitCard";
+import { NumberCard } from "../../types/NumberCard";
+
+interface CardProps {
+  suit: SuitCard;
+  symbol: string;
+  number: NumberCard;
+}
 
 export const Front = styled.div<Pick<CardProps, "suit" | "symbol" | "number">>`
   color: ${(props) => ColorCard[props.suit]};
-  height: 100%;
-  width: 100%;
+  width: 16rem;
+  height: 24rem;
   font-size: 4rem;
   line-height: 4rem;
   box-sizing: border-box;
-  padding: 4rem 2rem;
-  font-family: "Lora", serif;
+  padding: 3rem 2rem;
   position: absolute;
-  background-color: #e8e8e8;
+  background: rgb(233, 227, 211);
+  background: linear-gradient(
+    45deg,
+    rgba(233, 227, 211, 1) 0%,
+    rgba(253, 253, 251, 1) 50%,
+    rgba(233, 227, 211, 1) 100%
+  );
   border-radius: 0.6rem;
-  backface-visibility: hidden;
 
   &:before,
   &:after {
