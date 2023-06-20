@@ -3,7 +3,7 @@ import { ColorCard } from "../../types/ColorCard";
 import { SymbolCard } from "../../types/SymbolCard";
 import { SuitCard } from "../../types/SuitCard";
 import { NumberCard } from "../../types/NumberCard";
-import { CardContainer } from "../CardSkeleton/CardContainer";
+import { CardSkeleton } from "../CardSkeleton/CardSkeleton";
 
 interface CardProps {
   suit: SuitCard;
@@ -11,12 +11,10 @@ interface CardProps {
   number: NumberCard;
 }
 
-export const FrontContent = styled(CardContainer)<
+export const FrontContent = styled.div<
   Pick<CardProps, "suit" | "symbol" | "number">
 >`
   color: ${(props) => ColorCard[props.suit]};
-  font-size: 4rem;
-  line-height: 4rem;
   box-sizing: border-box;
   padding: 3rem 2.6rem;
   position: relative;
@@ -48,4 +46,6 @@ export const FrontContent = styled(CardContainer)<
     right: 1rem;
     transform: rotate(180deg);
   }
+
+  ${CardSkeleton}
 `;

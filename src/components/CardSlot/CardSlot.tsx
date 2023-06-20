@@ -1,4 +1,5 @@
 import { styled } from "styled-components";
+import { CardSkeleton } from "../CardSkeleton/CardSkeleton";
 
 const _CardSlot = ({
   text,
@@ -17,18 +18,22 @@ const _CardSlot = ({
 };
 
 export const CardSlot = styled(_CardSlot)`
+  ${CardSkeleton}
+
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 16rem;
-  height: 24rem;
   box-sizing: border-box;
   border: dotted 4px #7eb88c;
-  border-radius: 0.6rem;
   background-color: #ffffff14;
   font-size: 1.4rem;
+  line-height: 2rem;
   text-align: center;
   color: #ffd100;
   padding: 1rem;
-  cursor: ${props=> props.action ? 'pointer' : 'auto'}
+  cursor: ${(props) => (props.action ? "pointer" : "auto")};
+
+  @media (max-width: 580px) {
+    font-size: 1.2rem;
+  }
 `;
