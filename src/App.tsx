@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 
-import Card from "./components/Card";
-import { Back } from "./components/Card/Back";
-import { CardSlot } from "./components/Card/CardSlot";
+import FrontCard from "./components/FrontCard";
+import { Back } from "./components/BackCard/Back";
+import { CardSlot } from "./components/CardSlot/CardSlot";
 import { useSetPlayingCards } from "./hooks/useSetPlayingCards";
 import { CardBoard } from "./components/CardBoard/CardBoard";
 import "./App.css";
@@ -14,8 +14,6 @@ function App() {
   useEffect(() => {
     suffleSet();
   }, []);
-
-  console.log({ actualCard, cardsOnDeck, cardsFliped });
 
   return (
     <CardBoard>
@@ -36,7 +34,7 @@ function App() {
         <CardSlot text="Click in the deck to flip a card" />
       ) : (
         actualCard && (
-          <Card suit={actualCard?.suit} number={actualCard?.number}></Card>
+          <FrontCard suit={actualCard?.suit} number={actualCard?.number}></FrontCard>
         )
       )}
 

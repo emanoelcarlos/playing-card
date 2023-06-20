@@ -1,15 +1,17 @@
 * {
   margin: 0;
   padding: 0;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 body {
   font-family: "Lora", serif;
-  /* color: #888; */
 }
 
 #root {
-  width: 100%;
+  width: 100vw;
   height: 100vh;
   background-color: #298b47;
   background-image: url(/src/assets/bg-pattern.webp);
